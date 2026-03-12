@@ -1,0 +1,42 @@
+/* ═══════════════════════════════════════════════════
+   projects.css  |  Section 3 — Projects
+   Edit this file to change card appearance
+   ═══════════════════════════════════════════════════ */
+
+.sec-projects { background:radial-gradient(ellipse at 30% 60%,rgba(0,212,255,.03) 0%,transparent 55%),var(--bg0) }
+
+.proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; max-width:1280px; width:100% }
+
+/* ── 3D Card ── */
+.pw  { perspective:800px; cursor:pointer }
+.pc  {
+  position:relative; transform-style:preserve-3d;
+  background:rgba(0,212,255,.04); border:1px solid rgba(0,212,255,.16);
+  overflow:hidden;
+  clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,22px 100%,0 calc(100% - 22px));
+  transition:transform .5s var(--ease),border-color .3s,box-shadow .3s;
+}
+.pw:hover .pc { transform:rotateY(12deg) rotateX(-6deg) scale(1.02); border-color:rgba(0,212,255,.45); box-shadow:0 20px 60px rgba(0,212,255,.14) }
+.pc::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--neon),transparent); transition:opacity .3s; opacity:.5 }
+.pw:hover .pc::before { opacity:1 }
+
+/* Thumb */
+.pt  { height:185px; position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,rgba(0,212,255,.04),rgba(123,47,255,.07)); transition:transform .4s }
+.pw:hover .pt { transform:scale(1.05) }
+.pe  { font-size:3.4rem; position:relative; z-index:1; filter:drop-shadow(0 0 18px rgba(0,212,255,.5)); transition:transform .3s }
+.pw:hover .pe { transform:scale(1.14) }
+.pg  { position:absolute; inset:0; background:radial-gradient(circle at center,rgba(0,212,255,.12),transparent 70%); opacity:0; transition:opacity .3s }
+.pw:hover .pg { opacity:1 }
+.pbadge { position:absolute; top:12px; left:12px; font-family:var(--fm); font-size:.5rem; letter-spacing:2px; color:var(--neon); background:rgba(0,212,255,.1); border:1px solid rgba(0,212,255,.22); padding:4px 10px; z-index:2 }
+
+/* Body */
+.pb     { padding:22px 22px 50px }
+.ptitle { font-family:var(--fd); font-size:.86rem; letter-spacing:1px; color:var(--txt); margin-bottom:8px }
+.pdesc  { font-size:.82rem; color:var(--mid); line-height:1.72; font-weight:300; margin-bottom:16px }
+.pstack { display:flex; gap:7px; flex-wrap:wrap }
+.ptag   { font-family:var(--fm); font-size:.5rem; letter-spacing:1px; color:var(--neon2); border:1px solid rgba(123,47,255,.25); padding:3px 10px; background:rgba(123,47,255,.05) }
+.plnk   { position:absolute; bottom:18px; right:18px; width:34px; height:34px; border:1px solid rgba(0,212,255,.2); display:flex; align-items:center; justify-content:center; color:var(--neon); font-size:.9rem; transition:all .3s; background:transparent }
+.pw:hover .plnk { background:rgba(0,212,255,.1); border-color:var(--neon); box-shadow:0 0 18px rgba(0,212,255,.3) }
+
+@media(max-width:1100px){ .proj-grid{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:680px) { .proj-grid{grid-template-columns:1fr} }

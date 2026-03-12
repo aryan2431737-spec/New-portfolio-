@@ -1,0 +1,473 @@
+/* ═══════════════════════════════════════════════════════════
+   skills.css  |  Section 4 — Skills & Tools
+   Matches the deep-navy starfield aesthetic of ASC.DEV
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── CSS Variables (keep in sync with your global vars) ── */
+:root {
+  --sk-bg0:   #020b18;   /* deep navy — matches site bg */
+  --sk-bg1:   #041020;
+  --sk-bg2:   #061628;
+  --sk-txt:   #c8e6ff;   /* cool blue-white text */
+  --sk-mid:   #4a7a9b;
+  --sk-dim:   #1e3a52;
+
+  /* Neon accents */
+  --sk-c1:  #00d4ff;   /* cyan   */
+  --sk-c2:  #7b2fff;   /* violet */
+  --sk-c3:  #ff2d78;   /* pink   */
+  --sk-c4:  #00ffa3;   /* mint   */
+  --sk-c5:  #ffaa00;   /* amber  */
+
+  --sk-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --sk-fm: 'Share Tech Mono', 'Courier New', monospace;
+  --sk-fd: 'Orbitron', sans-serif;
+}
+
+/* ── Google Fonts import (add to <head> if not already) ── */
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Share+Tech+Mono&display=swap'); */
+
+/* ══════════════════════════════════════════════════
+   SECTION WRAPPER
+══════════════════════════════════════════════════ */
+.sec-skills {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 15% 50%,  rgba(0, 60,120,.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%,  rgba(0,180,255,.07) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, rgba(123,47,255,.06) 0%, transparent 50%),
+    linear-gradient(175deg, #020b18 0%, #041020 50%, #020c1a 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 100px 40px 120px;
+}
+
+/* ── Particle canvas (fills section) ── */
+.sk-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Scan-line CRT effect ── */
+.sk-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,.07) 2px,
+    rgba(0,0,0,.07) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+  animation: sk-scan 8s linear infinite;
+}
+@keyframes sk-scan {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 200px; }
+}
+
+/* ── Inner content ── */
+.sk-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+/* ══════════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════════ */
+.sk-header { text-align: left; }
+
+.sk-eyebrow {
+  font-family: var(--sk-fm);
+  font-size: .65rem;
+  letter-spacing: .3em;
+  color: var(--sk-c1);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: .75;
+}
+.sk-eye-slash {
+  color: var(--sk-mid);
+  font-size: .75rem;
+}
+
+.sk-title {
+  font-family: var(--sk-fd);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 900;
+  letter-spacing: -.01em;
+  line-height: 1.05;
+  color: #d0eeff;
+  margin-bottom: 18px;
+}
+.sk-title em {
+  font-style: normal;
+  /* Matches the teal→violet gradient in the screenshot */
+  background: linear-gradient(110deg, var(--sk-c1) 0%, var(--sk-c2) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sk-level {
+  font-family: var(--sk-fm);
+  font-size: .65rem;
+  color: var(--sk-mid);
+  letter-spacing: .12em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sk-level strong { color: var(--sk-c4); }
+.sk-bolt { font-style: normal; filter: drop-shadow(0 0 6px #ffaa00); }
+.sk-dash { color: var(--sk-dim); }
+
+/* ══════════════════════════════════════════════════
+   SKILL BARS — 3-D FLOATING CARDS
+══════════════════════════════════════════════════ */
+@keyframes skill-float-anim {
+  0%   { transform: translateY(0px) rotateX(1.5deg) rotateY(-1.5deg); }
+  100% { transform: translateY(-7px) rotateX(-1.5deg) rotateY(1.5deg); }
+}
+.ski-float {
+  transform-style: preserve-3d;
+  animation: skill-float-anim 4s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.sk-bars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Card shell */
+.ski {
+  position: relative;
+  padding: 22px 26px 24px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,180,255,.1);
+  background:
+    linear-gradient(135deg, rgba(0,180,255,.04) 0%, rgba(0,0,0,0) 60%),
+    rgba(4,16,32,.7);
+  backdrop-filter: blur(6px);
+  transform-style: preserve-3d;
+  transform: perspective(600px) translateZ(0);
+  transition:
+    transform   .55s var(--sk-ease),
+    box-shadow  .55s var(--sk-ease),
+    border-color .4s;
+  cursor: default;
+  overflow: visible;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.08); /* Enhanced depth */
+}
+
+/* Inner shine sweep (using background-position to avoid overflow) */
+.ski::before {
+  content: '';
+  position: absolute;
+  inset: -1px; /* Cover border */
+  border-radius: 10px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
+  background-size: 200% 100%;
+  background-position: 150% 0;
+  transition: background-position .65s var(--sk-ease);
+  pointer-events: none;
+}
+.ski:hover::before { background-position: -50% 0; }
+
+/* Corner bracket decoration */
+.ski::after {
+  content: '';
+  position: absolute;
+  top: 6px; left: 6px;
+  width: 14px; height: 14px;
+  border-top: 1px solid rgba(0,212,255,.25);
+  border-left: 1px solid rgba(0,212,255,.25);
+  pointer-events: none;
+  transition: border-color .3s;
+}
+.ski:hover::after { border-color: rgba(0,212,255,.7); }
+
+/* Per-color hover glow */
+.ski.sk-bc:hover  { box-shadow: 0 25px 65px rgba(0,212,255,.25),  inset 0 0 35px rgba(0,212,255,.06);  border-color: rgba(0,212,255,.5);  }
+.ski.sk-bp:hover  { box-shadow: 0 25px 65px rgba(123,47,255,.25), inset 0 0 35px rgba(123,47,255,.06); border-color: rgba(123,47,255,.5); }
+.ski.sk-bpk:hover { box-shadow: 0 25px 65px rgba(255,45,120,.25), inset 0 0 35px rgba(255,45,120,.06); border-color: rgba(255,45,120,.5); }
+.ski.sk-bg:hover  { box-shadow: 0 25px 65px rgba(0,255,163,.25),  inset 0 0 35px rgba(0,255,163,.06);  border-color: rgba(0,255,163,.5);  }
+.ski.sk-bgd:hover { box-shadow: 0 25px 65px rgba(255,170,0,.25),  inset 0 0 35px rgba(255,170,0,.06);  border-color: rgba(255,170,0,.5);  }
+
+/* Row: name + percentage */
+.ski-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  transform: translateZ(28px);
+}
+.ski-name {
+  font-family: var(--sk-fm);
+  font-size: .62rem;
+  letter-spacing: .22em;
+  color: var(--sk-txt);
+  text-transform: uppercase;
+}
+.ski-pct {
+  font-family: var(--sk-fd);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+/* Color classes for percentage label */
+.ski.sk-bc  .ski-pct { color: var(--sk-c1); }
+.ski.sk-bp  .ski-pct { color: var(--sk-c2); }
+.ski.sk-bpk .ski-pct { color: var(--sk-c3); }
+.ski.sk-bg  .ski-pct { color: var(--sk-c4); }
+.ski.sk-bgd .ski-pct { color: var(--sk-c5); }
+
+/* Track */
+.ski-track {
+  height: 2px;
+  background: rgba(255,255,255,.05);
+  border-radius: 2px;
+  overflow: visible;
+  position: relative;
+  transform: translateZ(18px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* Animated fill bar */
+.ski-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 2px;
+  position: relative;
+  transition: width 2.2s var(--sk-ease);
+}
+
+/* Glowing tip dot */
+.ski-bar::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: inherit;
+  box-shadow: 0 0 16px 3px currentColor;
+  filter: blur(.5px);
+}
+
+/* Bar fill gradients */
+.ski.sk-bc  .ski-bar { background: linear-gradient(90deg, rgba(0,212,255,.15),  var(--sk-c1)); }
+.ski.sk-bp  .ski-bar { background: linear-gradient(90deg, rgba(123,47,255,.15), var(--sk-c2)); }
+.ski.sk-bpk .ski-bar { background: linear-gradient(90deg, rgba(255,45,120,.15), var(--sk-c3)); }
+.ski.sk-bg  .ski-bar { background: linear-gradient(90deg, rgba(0,255,163,.15),  var(--sk-c4)); }
+.ski.sk-bgd .ski-bar { background: linear-gradient(90deg, rgba(255,170,0,.15),  var(--sk-c5)); }
+
+/* ══════════════════════════════════════════════════
+   DIVIDER
+══════════════════════════════════════════════════ */
+.sk-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.sk-div-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,180,255,.2), transparent);
+}
+.sk-div-label {
+  font-family: var(--sk-fm);
+  font-size: .55rem;
+  letter-spacing: .42em;
+  color: var(--sk-c1);
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: .65;
+}
+
+/* ══════════════════════════════════════════════════
+   TOOLS GRID — TRUE 3-D TILES
+══════════════════════════════════════════════════ */
+@keyframes tool-float-anim {
+  0%   { transform: translateY(0px) rotateX(2deg) rotateY(-2deg) translateZ(0px); }
+  100% { transform: translateY(-6px) rotateX(-2deg) rotateY(2deg) translateZ(5px); }
+}
+.tc-float {
+  transform-style: preserve-3d;
+  animation: tool-float-anim 3.5s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 18px;
+}
+
+/* Perspective wrapper */
+.tc {
+  aspect-ratio: 1;
+  perspective: 600px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* 3-D tile body */
+.ti {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .5s var(--sk-ease);
+  position: relative;
+}
+
+/* Face */
+.tf {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: rgba(4,16,32,.75);
+  border: 1px solid rgba(0,180,255,.1);
+  backdrop-filter: blur(4px);
+  overflow: visible;
+  transform-style: preserve-3d;
+  transform: translateZ(10px);
+  transition: background .3s, border-color .3s, box-shadow .3s;
+  /* inset bevel */
+  box-shadow:
+    inset 0  1px 0 rgba(255,255,255,.06),
+    inset 0 -1px 0 rgba(0,0,0,.4),
+    0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* Top specular line */
+.tf::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,.25), transparent);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* Soft ground shadow */
+.tf::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; left: 10%; right: 10%;
+  height: 14px;
+  background: rgba(0,0,0,.35);
+  filter: blur(7px);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.tc:hover .tf::after { opacity: 1; }
+
+/* Per-color hover state for tiles */
+.tc.sk-bc:hover  .tf { border-color: rgba(0,212,255,.7);  background: rgba(0,212,255,.12);  box-shadow: 0 25px 50px rgba(0,212,255,.3),  inset 0 1px 0 rgba(255,255,255,.15); }
+.tc.sk-bp:hover  .tf { border-color: rgba(123,47,255,.7); background: rgba(123,47,255,.12); box-shadow: 0 25px 50px rgba(123,47,255,.3), inset 0 1px 0 rgba(255,255,255,.15); }
+.tc.sk-bpk:hover .tf { border-color: rgba(255,45,120,.7); background: rgba(255,45,120,.12); box-shadow: 0 25px 50px rgba(255,45,120,.3), inset 0 1px 0 rgba(255,255,255,.15); }
+.tc.sk-bg:hover  .tf { border-color: rgba(0,255,163,.7);  background: rgba(0,255,163,.12);  box-shadow: 0 25px 50px rgba(0,255,163,.3),  inset 0 1px 0 rgba(255,255,255,.15); }
+.tc.sk-bgd:hover .tf { border-color: rgba(255,170,0,.7);  background: rgba(255,170,0,.12);  box-shadow: 0 25px 50px rgba(255,170,0,.3),  inset 0 1px 0 rgba(255,255,255,.15); }
+
+/* Icon */
+.t-ico {
+  font-size: 1.5rem;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  transform: translateZ(25px);
+  transition: transform .4s var(--sk-ease), filter .4s;
+}
+.tc.sk-bc:hover  .t-ico { transform: scale(1.3) translateZ(45px); filter: drop-shadow(0 0 15px var(--sk-c1));  }
+.tc.sk-bp:hover  .t-ico { transform: scale(1.3) translateZ(45px); filter: drop-shadow(0 0 15px var(--sk-c2));  }
+.tc.sk-bpk:hover .t-ico { transform: scale(1.3) translateZ(45px); filter: drop-shadow(0 0 15px var(--sk-c3));  }
+.tc.sk-bg:hover  .t-ico { transform: scale(1.3) translateZ(45px); filter: drop-shadow(0 0 15px var(--sk-c4));  }
+.tc.sk-bgd:hover .t-ico { transform: scale(1.3) translateZ(45px); filter: drop-shadow(0 0 15px var(--sk-c5));  }
+
+/* Label */
+.t-nm {
+  font-family: var(--sk-fm);
+  font-size: .38rem;
+  letter-spacing: .1em;
+  color: var(--sk-dim);
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transform: translateZ(15px);
+  transition: color .3s, transform .4s var(--sk-ease);
+}
+.tc:hover .t-nm {
+  transform: translateZ(25px);
+}
+.tc.sk-bc:hover  .t-nm { color: var(--sk-c1); }
+.tc.sk-bp:hover  .t-nm { color: var(--sk-c2); }
+.tc.sk-bpk:hover .t-nm { color: var(--sk-c3); }
+.tc.sk-bg:hover  .t-nm { color: var(--sk-c4); }
+.tc.sk-bgd:hover .t-nm { color: var(--sk-c5); }
+
+/* ══════════════════════════════════════════════════
+   REVEAL ANIMATION
+══════════════════════════════════════════════════ */
+.rev {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .75s var(--sk-ease), transform .75s var(--sk-ease);
+}
+.rev.on {
+  opacity: 1;
+  transform: translateY(0);
+}
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .18s; }
+.d3 { transition-delay: .28s; }
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .sk-bars-grid { grid-template-columns: repeat(2, 1fr); }
+  .tools-grid   { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 760px) {
+  .sk-bars-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .sec-skills { padding: 80px 24px 100px; }
+  .tools-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .sk-title   { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+}
+@media (max-width: 380px) {
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+}

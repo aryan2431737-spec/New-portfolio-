@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aryan Singh Chauhan — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet" />
+
+  <!-- ═══ MODULAR CSS — one file per section ═══ -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/certifications.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+</head>
+
+<body>
+
+  <!-- ░░ CURSOR ░░ -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- ░░ LOADER ░░ -->
+  <div id="loader">
+    <div class="ld-ring"></div>
+    <p class="ld-text">INITIALIZING ARYAN'S UNIVERSE</p>
+    <div class="ld-track">
+      <div class="ld-fill" id="ldFill"></div>
+    </div>
+  </div>
+
+  <!-- ░░ THREE.JS BACKGROUND ░░ -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- ░░ NAVIGATION ░░ -->
+  <nav id="mainNav">
+    <div class="nav-logo">ASC<span>.DEV</span></div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-a active">Home</a></li>
+      <li><a href="#about" class="nav-a">About</a></li>
+      <li><a href="#projects" class="nav-a">Projects</a></li>
+      <li><a href="#skills" class="nav-a">Skills</a></li>
+      <li><a href="#certifications" class="nav-a">Certs</a></li>
+      <li><a href="#contact" class="nav-a">Contact</a></li>
+    </ul>
+    <div class="nav-badge"><span class="nav-dot"></span>BCA · 2027</div>
+  </nav>
+
+  <!-- ════════════════════════════════════════════
+       SECTION 1 — HOME
+  ════════════════════════════════════════════ -->
+  <section id="home" class="sec-home">
+    <div class="home-grid">
+
+      <!-- Left: copy -->
+      <div class="home-copy">
+        <p class="home-eyebrow">◈ BCA STUDENT &amp; ASPIRING DEVELOPER</p>
+        <h1 class="home-h1">
+          <span class="h1-glow">Aryan Singh</span>
+          <span class="h1-glow2">Chauhan</span>
+          <span class="h1-sub">PSIT · KANPUR · 2027</span>
+        </h1>
+        <p class="home-p">Passionate about building immersive digital experiences. Pursuing BCA with expertise in
+          Flutter, Web Development &amp; App Design.</p>
+        <div class="home-btns">
+          <!-- 3D Download Resume Button -->
+          <a href="#" class="btn-3d btn-primary" download>
+            <span class="btn-face" href="file:///C:/Users/aryan/Downloads/My_Resume.pdf">📄 Download Resume</span>
+          </a>
+          <!-- 3D Social Buttons -->
+          <div class="social-3d-group">
+            <a href="https://www.linkedin.com/in/aryan-singh-chauhan-a62a86324" target="_blank"
+              class="btn-3d btn-social" title="LinkedIn">
+              <span class="btn-face">in</span>
+            </a>
+            <a href="mailto:[EMAIL_ADDRESS]" class="btn-3d btn-social" title="Email Me">
+              <span class="btn-face">✉</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: 3D avatar -->
+      <div class="home-visual">
+        <div id="avStage">
+          <div id="av3d">
+            <div class="av-ring av-r1"></div>
+            <div class="av-ring av-r2"></div>
+            <div class="av-ring av-r3"></div>
+
+            <div class="av-photo-container">
+              <!-- ★ YOUR IMAGE: drop assets/my3dimage.png here ★ -->
+              <img src="assets/my3dimage.png" alt="Aryan 3D Image" class="av-photo-3d" id="heroImg"
+                onerror="this.style.display='none';document.getElementById('avFallback').style.display='flex'" />
+
+              <!-- SVG fallback shown if image file is missing -->
+              <div id="avFallback" class="av-fallback-3d" style="display: none;">
+                <svg width="210" height="270" viewBox="0 0 210 270" fill="none">
+                  <defs>
+                    <radialGradient id="rg">
+                      <stop offset="0%" stop-color="#00d4ff" stop-opacity=".2" />
+                      <stop offset="100%" stop-color="#7b2fff" stop-opacity="0" />
+                    </radialGradient>
+                    <linearGradient id="sk" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#d4956a" />
+                      <stop offset="100%" stop-color="#b87040" />
+                    </linearGradient>
+                    <linearGradient id="sh" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#0d2540" />
+                      <stop offset="100%" stop-color="#061320" />
+                    </linearGradient>
+                    <linearGradient id="hr" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#111827" />
+                      <stop offset="100%" stop-color="#060c18" />
+                    </linearGradient>
+                    <linearGradient id="ey" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#00aacc" />
+                      <stop offset="100%" stop-color="#0055aa" />
+                    </linearGradient>
+                    <linearGradient id="cy" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#00d4ff" />
+                      <stop offset="100%" stop-color="#7b2fff" />
+                    </linearGradient>
+                  </defs>
+                  <rect width="210" height="270" fill="url(#rg)" />
+                  <path d="M38 210 Q47 176 68 162 L98 152 L105 168 L112 152 L142 162 Q163 176 172 210 L172 270 L38 270Z"
+                    fill="url(#sh)" />
+                  <path d="M86 150 Q88 132 105 128 Q122 132 124 150 L122 153 Q112 159 105 162 Q98 159 88 153Z"
+                    fill="url(#sk)" />
+                  <ellipse cx="105" cy="92" rx="48" ry="56" fill="url(#sk)" />
+                  <path d="M57 80 Q61 46 105 42 Q149 46 153 80 Q148 58 105 55 Q62 58 57 80Z" fill="url(#hr)" />
+                  <ellipse cx="57" cy="94" rx="7" ry="11" fill="#b87040" stroke="rgba(0,212,255,.2)"
+                    stroke-width=".5" />
+                  <ellipse cx="153" cy="94" rx="7" ry="11" fill="#b87040" stroke="rgba(0,212,255,.2)"
+                    stroke-width=".5" />
+                  <ellipse cx="88" cy="89" rx="13" ry="12" fill="#050d1e" stroke="rgba(0,212,255,.5)"
+                    stroke-width=".9" />
+                  <ellipse cx="122" cy="89" rx="13" ry="12" fill="#050d1e" stroke="rgba(0,212,255,.5)"
+                    stroke-width=".9" />
+                  <circle cx="88" cy="89" r="7" fill="url(#ey)" />
+                  <circle cx="122" cy="89" r="7" fill="url(#ey)" />
+                  <circle cx="88" cy="89" r="3.5" fill="#030912" />
+                  <circle cx="122" cy="89" r="3.5" fill="#030912" />
+                  <circle cx="90.5" cy="86.5" r="2" fill="white" opacity=".9" />
+                  <circle cx="124.5" cy="86.5" r="2" fill="white" opacity=".9" />
+                  <ellipse cx="88" cy="89" rx="13" ry="12" fill="none" stroke="url(#cy)" stroke-width="1.2"
+                    opacity=".65" />
+                  <ellipse cx="122" cy="89" rx="13" ry="12" fill="none" stroke="url(#cy)" stroke-width="1.2"
+                    opacity=".65" />
+                  <path d="M75 76 Q88 70 101 74" stroke="#141e2d" stroke-width="3" stroke-linecap="round" />
+                  <path d="M109 74 Q122 70 135 76" stroke="#141e2d" stroke-width="3" stroke-linecap="round" />
+                  <path d="M105 98 L101 112 Q105 116 109 112Z" stroke="rgba(130,70,30,.4)" stroke-width="1.2"
+                    fill="none" />
+                  <path d="M88 125 Q105 133 122 125" stroke="#c05040" stroke-width="1.8" stroke-linecap="round"
+                    fill="none" />
+                  <circle cx="57" cy="60" r="1.5" fill="rgba(0,212,255,.6)" />
+                  <circle cx="153" cy="60" r="1.5" fill="rgba(0,212,255,.6)" />
+                  <path d="M57 60 L67 55 L80 55" stroke="rgba(0,212,255,.25)" stroke-width=".6" />
+                  <path d="M153 60 L143 55 L130 55" stroke="rgba(0,212,255,.25)" stroke-width=".6" />
+                  <line x1="57" y1="92" x2="153" y2="92" stroke="rgba(0,212,255,.06)" stroke-width=".5"
+                    stroke-dasharray="2 7" />
+                  <text x="105" y="256" text-anchor="middle" font-family="Share Tech Mono,monospace" font-size="7"
+                    fill="rgba(0,212,255,.4)" letter-spacing="2">ADD YOUR PHOTO</text>
+                </svg>
+              </div>
+            </div><!-- /av-photo-container -->
+
+            <!-- floating chips -->
+            <div class="av-chips">
+              <div class="av-chip">◈ BCA STUDENT</div>
+              <div class="av-chip">◉ PSIT KANPUR</div>
+              <div class="av-chip">▸ BATCH 2027</div>
+            </div>
+          </div><!-- /av3d -->
+        </div><!-- /avStage -->
+        <p class="drag-hint">⟳ DRAG TO ROTATE · SCROLL TO ZOOM</p>
+      </div><!-- /home-visual -->
+
+    </div><!-- /home-grid -->
+
+    <div class="scroll-cue">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 2 — ABOUT
+  ════════════════════════════════════════════ -->
+  <section id="about" class="sec-about">
+    <div class="about-wrap">
+
+      <div class="about-header">
+        <div class="eyebrow rev">About Me</div>
+        <h2 class="sec-h2 rev d1">Who Is <em>Aryan?</em></h2>
+      </div>
+
+      <div class="about-grid">
+        <!-- Panel 1: Identity -->
+        <div class="a-panel rev d1" id="panel1">
+          <div class="a-panel-inner">
+            <div class="a-panel-icon">🎓</div>
+            <h3 class="a-panel-title">Education</h3>
+            <p class="a-panel-text">Bachelor of Computer Applications</p>
+            <p class="a-panel-sub">PSIT College of Higher Education</p>
+            <p class="a-panel-sub">Kanpur, Uttar Pradesh</p>
+            <div class="a-panel-badge">Passing Year: 2027</div>
+          </div>
+        </div>
+
+        <!-- Panel 2: About text -->
+        <div class="a-panel a-panel-wide rev d2" id="panel2">
+          <div class="a-panel-inner">
+            <div class="a-panel-icon">⚡</div>
+            <h3 class="a-panel-title">About Me</h3>
+            <p class="a-panel-text">
+              I'm Aryan Singh Chauhan, a BCA student at <span class="text-highlight">PSIT College of Higher
+                Education</span>, Kanpur.
+              I'm passionate about technology and continuously building my skills in <span class="text-highlight">Web
+                Development</span>,
+              app development with <span class="text-highlight">Flutter</span>, and <span class="text-highlight">Backend
+                Technologies</span>. Though I'm early in my career,
+              I bring dedication, curiosity, and a hunger to solve real-world problems through code.
+            </p>
+            <div class="a-tag-row">
+              <span class="a-tag">Flutter</span>
+              <span class="a-tag">JavaScript</span>
+              <span class="a-tag">Node.js</span>
+              <span class="a-tag">MySQL</span>
+              <span class="a-tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Certs mini -->
+        <!-- Panel 3: Certs mini -->
+        <div class="a-panel rev d3" id="panel3">
+          <div class="a-panel-inner">
+            <div class="a-panel-icon">🏆</div>
+            <h3 class="a-panel-title">Certifications</h3>
+            <ul class="a-cert-list">
+              <li><a href="https://www.coursera.org/account/accomplishments/verify/2QULKUSQF8DY" target="_blank">Google
+                  Python (Coursera)</a></li>
+              <li><a href="https://www.coursera.org/account/accomplishments/verify/4C950JA45U3M"
+                  target="_blank">Microsoft OS Certificate</a></li>
+              <li><a href="https://www.coursera.org/account/accomplishments/verify/GQCJZICPOI36"
+                  target="_blank">HTML & CSS (Coursera)</a></li>
+              <li><a href="https://verify.onwingspan.com/" target="_blank">Springboard
+                  Certification C and C++</a></li>
+              <li><a
+                  href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/pmnMSL4QiQ9JCgE3W/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_bvvTnwpi863C7JwtD_1756481236557_completion_certificate.pdf"
+                  target="_blank">AWS Solution Architecture</a></li>
+              <li><a href="https://www.coursera.org/account/accomplishments/verify/DATK872V7FTL" target="_blank">Intro to Gemini (Coursera)</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 3 — PROJECTS
+  ════════════════════════════════════════════ -->
+  <section id="projects" class="sec-projects">
+    <div class="proj-header">
+      <div class="eyebrow rev">My Work</div>
+      <h2 class="sec-h2 rev d1">Featured <em>Projects</em></h2>
+    </div>
+    <div class="proj-grid" id="projGrid">
+      <!-- Rendered by js/projects.js -->
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 4 — SKILLS
+  ════════════════════════════════════════════ -->
+  <section id="skills" class="sec-skills">
+    <!-- Particle Canvas for Skills -->
+    <canvas id="skCanvas" class="sk-particles"></canvas>
+
+    <div class="sk-inner">
+      <div class="sk-header">
+        <div class="eyebrow rev">Toolbox</div>
+        <h2 class="sec-h2 rev d1">Skills &amp; <em>Tools</em></h2>
+        <p class="sk-level rev d2">⚡ Skill Level: <strong>Basic</strong> — Actively learning as a BCA student</p>
+      </div>
+
+      <div class="sk-wrap">
+        <!-- Skill Bars -->
+        <div class="sk-bars-grid" id="skBars">
+          <div class="ski-container rev d1">
+            <div class="ski-float" style="animation-delay: 0s">
+              <div class="ski sk-bc" data-color="sk-bc">
+                <div class="ski-top">
+                  <span class="ski-name">HTML &amp; CSS</span>
+                  <span class="ski-pct">60%</span>
+                </div>
+                <div class="ski-track">
+                  <div class="ski-bar" data-p="60"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ski-container rev d2">
+            <div class="ski-float" style="animation-delay: 0.2s">
+              <div class="ski sk-bgd" data-color="sk-bgd">
+                <div class="ski-top">
+                  <span class="ski-name">JavaScript</span>
+                  <span class="ski-pct">45%</span>
+                </div>
+                <div class="ski-track">
+                  <div class="ski-bar" data-p="45"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ski-container rev d1">
+            <div class="ski-float" style="animation-delay: 0.4s">
+              <div class="ski sk-bp" data-color="sk-bp">
+                <div class="ski-top">
+                  <span class="ski-name">Flutter / Dart</span>
+                  <span class="ski-pct">40%</span>
+                </div>
+                <div class="ski-track">
+                  <div class="ski-bar" data-p="40"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ski-container rev d2">
+            <div class="ski-float" style="animation-delay: 0.6s">
+              <div class="ski sk-bg" data-color="sk-bg">
+                <div class="ski-top">
+                  <span class="ski-name">Node.js</span>
+                  <span class="ski-pct">35%</span>
+                </div>
+                <div class="ski-track">
+                  <div class="ski-bar" data-p="35"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ski-container rev d1">
+            <div class="ski-float" style="animation-delay: 0.8s">
+              <div class="ski sk-bc" data-color="sk-bc">
+                <div class="ski-top">
+                  <span class="ski-name">MySQL</span>
+                  <span class="ski-pct">40%</span>
+                </div>
+                <div class="ski-track">
+                  <div class="ski-bar" data-p="40"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ski-container rev d2">
+            <div class="ski-float" style="animation-delay: 1s">
+              <div class="ski sk-bpk" data-color="sk-bpk">
+                <div class="ski-top">
+                  <span class="ski-name">Git &amp; GitHub</span>
+                  <span class="ski-pct">50%</span>
+                </div>
+                <div class="ski-track">
+                  <div class="ski-bar" data-p="50"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sk-divider rev">
+          <div class="sk-div-line"></div>
+          <span class="sk-div-label">◈ TOOLS I USE</span>
+          <div class="sk-div-line"></div>
+        </div>
+
+        <!-- 3D Tool Icons -->
+        <div class="tools-grid" id="toolsGrid">
+          <div class="tc-wrapper rev" style="transition-delay: 0s">
+            <div class="tc-float" style="animation-delay: 0s">
+              <div class="tc sk-bp" title="Flutter">
+                <div class="ti">
+                  <div class="tf">
+                    <span class="t-ico">🐦</span>
+                    <span class="t-nm">Flutter</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tc-wrapper rev" style="transition-delay: 0.06s">
+            <div class="tc-float" style="animation-delay: 0.15s">
+              <div class="tc sk-bpk" title="Git">
+                <div class="ti">
+                  <div class="tf">
+                    <span class="t-ico">🔀</span>
+                    <span class="t-nm">Git</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tc-wrapper rev" style="transition-delay: 0.12s">
+            <div class="tc-float" style="animation-delay: 0.3s">
+              <div class="tc sk-bp" title="GitHub">
+                <div class="ti">
+                  <div class="tf">
+                    <span class="t-ico">🐙</span>
+                    <span class="t-nm">GitHub</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tc-wrapper rev" style="transition-delay: 0.18s">
+            <div class="tc-float" style="animation-delay: 0.45s">
+              <div class="tc sk-bg" title="Node.js">
+                <div class="ti">
+                  <div class="tf">
+                    <span class="t-ico">🟩</span>
+                    <span class="t-nm">Node.js</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tc-wrapper rev" style="transition-delay: 0.24s">
+            <div class="tc-float" style="animation-delay: 0.6s">
+              <div class="tc sk-bc" title="VS Code">
+                <div class="ti">
+                  <div class="tf">
+                    <span class="t-ico">💙</span>
+                    <span class="t-nm">VS Code</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tc-wrapper rev" style="transition-delay: 0.3s">
+            <div class="tc-float" style="animation-delay: 0.75s">
+              <div class="tc sk-bc" title="MySQL">
+                <div class="ti">
+                  <div class="tf">
+                    <span class="t-ico">🐬</span>
+                    <span class="t-nm">MySQL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tc-wrapper rev" style="transition-delay: 0.36s">
+            <div class="tc-float" style="animation-delay: 0.9s">
+              <div class="tc sk-bgd" title="JavaScript">
+                <div class="ti">
+                  <div class="tf">
+                    <span class="t-ico">🟨</span>
+                    <span class="t-nm">JavaScript</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /tools-grid -->
+      </div> <!-- /sk-wrap -->
+    </div> <!-- /sk-inner -->
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 5 — CERTIFICATIONS
+  ════════════════════════════════════════════ -->
+  <section id="certifications" class="sec-certs">
+    <div class="cert-header">
+      <div class="eyebrow rev">Achievements</div>
+      <h2 class="sec-h2 rev d1">My <em>Certifications</em></h2>
+    </div>
+    <div class="cert-grid" id="certGrid">
+      <!-- Rendered by js/certifications.js -->
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 6 — CONTACT
+  ════════════════════════════════════════════ -->
+  <section id="contact" class="sec-contact">
+    <canvas id="cParts"></canvas>
+
+    <div class="contact-header rev">
+      <div class="eyebrow">Get In Touch</div>
+      <h2 class="sec-h2">Let's <em>Connect</em></h2>
+      <p class="contact-sub">Have an idea or opportunity? I'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-wrap">
+      <div class="form-glass rev d1">
+        <form id="contactForm" novalidate>
+          <div class="fg">
+            <div class="fgrp" data-f="name">
+              <label class="flbl" for="fn">Name</label>
+              <input type="text" id="fn" class="finp" name="name" placeholder="Your full name" />
+              <span class="ferr">Name is required</span>
+            </div>
+            <div class="fgrp" data-f="email">
+              <label class="flbl" for="fe">Email</label>
+              <input type="email" id="fe" class="finp" name="email" placeholder="your@email.com" />
+              <span class="ferr">Valid email required</span>
+            </div>
+            <div class="fgrp full" data-f="subject">
+              <label class="flbl" for="fs">Subject</label>
+              <input type="text" id="fs" class="finp" name="subject" placeholder="What's this about?" />
+              <span class="ferr">Subject is required</span>
+            </div>
+            <div class="fgrp full" data-f="message">
+              <label class="flbl" for="fm">Message</label>
+              <textarea id="fm" class="ftxt" name="message" placeholder="Write your message..."></textarea>
+              <span class="ferr">Message is required</span>
+            </div>
+          </div>
+          <button type="submit" class="fsub" id="fBtn">
+            <span id="fTxt">⟶ SEND MESSAGE</span>
+          </button>
+        </form>
+        <div class="ftoast" id="fToast">✓ MESSAGE SENT — I'LL REPLY SOON!</div>
+      </div>
+
+      <!-- Info panel -->
+      <div class="contact-info rev d2">
+        <!-- 3D Phone Number Card -->
+        <div class="cinfo-item phone-3d-card">
+          <div class="phone-face">
+            <span class="cinfo-icon phone-icon">📞</span>
+            <div>
+              <div class="cinfo-label">Call Me</div>
+              <div class="phone-number">7905480543</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cinfo-item">
+          <span class="cinfo-icon">📍</span>
+          <div>
+            <div class="cinfo-label">Location</div>
+            <div class="cinfo-val">Kanpur, Uttar Pradesh</div>
+          </div>
+        </div>
+        <div class="cinfo-item">
+          <span class="cinfo-icon">🎓</span>
+          <div>
+            <div class="cinfo-label">College</div>
+            <div class="cinfo-val">PSIT College of Higher Education</div>
+          </div>
+        </div>
+        <div class="cinfo-item">
+          <span class="cinfo-icon">📚</span>
+          <div>
+            <div class="cinfo-label">Course</div>
+            <div class="cinfo-val">BCA — Batch 2027</div>
+          </div>
+        </div>
+        <div class="cinfo-item">
+          <span class="cinfo-icon">💡</span>
+          <div>
+            <div class="cinfo-label">Open For</div>
+            <div class="cinfo-val">Internships &amp; Collaborations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Back to top arrow button -->
+  <button class="back-top" id="backTop" title="Back to Home">
+    <span>↑</span>
+  </button>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer id="mainFooter">
+    <span>© 2025 Aryan Singh Chauhan — PSIT Kanpur</span>
+    <span class="footer-r">BCA · 2027 ◈ ALL RIGHTS RESERVED</span>
+  </footer>
+
+  <!-- ═══ THREE.JS CDN ═══ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- ═══ MODULAR JS — one file per section ═══ -->
+  <script src="js/global.js"></script>
+  <script src="js/background3d.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/certifications.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+
+</html>

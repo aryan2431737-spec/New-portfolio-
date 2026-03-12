@@ -1,0 +1,175 @@
+/* ═══════════════════════════════════════════════════
+   home.css  |  Section 1 — Home / Hero
+   Edit this file to change the hero layout and avatar
+   ═══════════════════════════════════════════════════ */
+
+.sec-home {
+  background:
+    radial-gradient(ellipse at 65% 40%,rgba(0,212,255,.05) 0%,transparent 55%),
+    radial-gradient(ellipse at 15% 75%,rgba(123,47,255,.06) 0%,transparent 50%);
+}
+
+/* ── Layout ── */
+.home-grid { display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; max-width:1280px; width:100%; position:relative; z-index:5 }
+
+/* ── Copy ── */
+.home-eyebrow { font-family:var(--fm); font-size:.62rem; letter-spacing:7px; color:var(--neon); margin-bottom:18px; opacity:0; animation:fadeUp .7s .4s forwards }
+.home-h1 { font-family:var(--fd); font-size:clamp(2.5rem,5.2vw,5rem); font-weight:900; line-height:1; letter-spacing:3px; margin-bottom:22px; opacity:0; animation:fadeUp .8s .6s forwards }
+.h1-line1 { display:block; background:linear-gradient(135deg,var(--neon),var(--neon2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; filter:drop-shadow(0 0 40px rgba(0,212,255,.4)) }
+.h1-line2 { display:block; color:var(--txt) }
+.h1-sub   { display:block; color:rgba(204,232,255,.4); font-size:.42em; letter-spacing:10px; margin-top:10px; font-family:var(--fm) }
+.home-p   { font-size:1rem; color:var(--mid); line-height:1.85; font-weight:300; max-width:460px; margin-bottom:40px; letter-spacing:.3px; opacity:0; animation:fadeUp .8s .8s forwards }
+.home-btns { display:flex; gap:18px; flex-wrap:wrap; opacity:0; animation:fadeUp .8s 1s forwards; perspective: 800px; }
+
+/* ── 3D Home Buttons ── */
+.btn-3d {
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: transform 0.4s var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-face {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  background: rgba(4, 16, 32, 0.8);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--neon, #00d4ff);
+  font-family: var(--fm, 'Share Tech Mono', monospace);
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transform: translateZ(10px);
+  backdrop-filter: blur(4px);
+  transition: all 0.4s ease;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 8px 20px rgba(0,0,0,0.5);
+}
+.btn-primary .btn-face {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 47, 255, 0.15));
+  border-color: rgba(0, 212, 255, 0.4);
+}
+.social-3d-group {
+  display: flex;
+  gap: 14px;
+}
+.btn-social .btn-face {
+  padding: 14px 20px;
+  font-size: 1.2rem;
+  border-color: rgba(123, 47, 255, 0.3);
+  color: #c8e6ff;
+}
+
+/* Hover 3D floating & glowing effects */
+.btn-3d:hover {
+  transform: translateY(-5px) rotateX(8deg) rotateY(-5deg);
+}
+.btn-primary:hover .btn-face {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(123, 47, 255, 0.3));
+  border-color: rgba(0, 212, 255, 0.8);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 15px 30px rgba(0, 212, 255, 0.3);
+  transform: translateZ(25px);
+}
+.btn-social:hover .btn-face {
+  border-color: rgba(123, 47, 255, 0.8);
+  color: #fff;
+  text-shadow: 0 0 10px rgba(123, 47, 255, 0.8);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 15px 30px rgba(123, 47, 255, 0.3);
+  transform: translateZ(20px) scale(1.1);
+}
+/* ── Visual / Avatar Stage ── */
+.home-visual { display:flex; flex-direction:column; align-items:center; gap:14px; opacity:0; animation:fadeUp 1s .5s forwards }
+#avStage { width:330px; height:410px; position:relative; perspective:900px; cursor:grab; user-select:none }
+#avStage:active { cursor:grabbing }
+#av3d   { width:100%; height:100%; transform-style:preserve-3d; position:relative }
+
+/* Halo rings */
+.av-ring { position:absolute; border-radius:50%; border-style:solid; top:50%; left:50%; animation:haloSpin linear infinite; pointer-events:none }
+.r1 { width:400px; height:400px; margin:-200px 0 0 -200px; border-width:1px; border-color:rgba(0,212,255,.18) transparent; animation-duration:10s }
+.r2 { width:340px; height:340px; margin:-170px 0 0 -170px; border-width:1px; border-color:transparent rgba(123,47,255,.14); animation-duration:7s; animation-direction:reverse }
+.r3 { width:460px; height:460px; margin:-230px 0 0 -230px; border-width:1px; border-color:rgba(0,255,163,.07) transparent; animation-duration:17s }
+
+/* Standalone 3D Photo */
+@keyframes photoFloat {
+  0%, 100% { transform: translateY(0) rotateX(2deg) rotateY(-2deg); }
+  50% { transform: translateY(-15px) rotateX(-2deg) rotateY(4deg); }
+}
+
+.av-photo-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  height: 380px;
+  margin: -190px 0 0 -190px;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  animation: photoFloat 6s ease-in-out infinite;
+  z-index: 5;
+  cursor: grab;
+}
+.av-photo-container:active {
+  cursor: grabbing;
+}
+
+.av-photo-3d {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* Making it a circle or smooth shape */
+  position: relative;
+  z-index: 1;
+  transform: translateZ(30px);
+  filter: drop-shadow(0 25px 35px rgba(0, 212, 255, 0.4));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.3), inset 0 0 20px rgba(0, 212, 255, 0.2);
+}
+
+/* Hover effect on standalone image */
+.av-photo-container:hover .av-photo-3d {
+  transform: translateZ(60px) scale(1.08) rotateY(-5deg) rotateX(5deg);
+  filter: drop-shadow(0 40px 60px rgba(123, 47, 255, 0.5)) drop-shadow(0 0 30px rgba(0, 212, 255, 0.8));
+  box-shadow: 0 0 60px rgba(0, 212, 255, 0.5), inset 0 0 30px rgba(0, 212, 255, 0.4);
+}
+
+.av-fallback-3d {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  transform: translateZ(20px);
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(0, 212, 255, 0.05);
+  border: 2px dashed rgba(0, 212, 255, 0.3);
+}
+
+/* Stat chips */
+.av-chips { position:absolute; right:-54px; top:24px; display:flex; flex-direction:column; gap:10px }
+.av-chip  { background:rgba(0,212,255,.06); border:1px solid rgba(0,212,255,.18); padding:7px 12px; font-family:var(--fm); font-size:.5rem; color:var(--neon); letter-spacing:2px; white-space:nowrap; animation:blk 3s ease-in-out infinite }
+.av-chip:nth-child(2){animation-delay:1s} .av-chip:nth-child(3){animation-delay:2s}
+
+.drag-hint { font-family:var(--fm); font-size:.55rem; letter-spacing:3px; color:rgba(0,212,255,.35); animation:blk 2.5s ease-in-out infinite; text-align:center }
+
+/* Scroll cue */
+.scroll-cue { position:absolute; bottom:34px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; font-family:var(--fm); font-size:.54rem; color:var(--dim); letter-spacing:3px; opacity:0; animation:fadeUp 1s 2s forwards; z-index:5 }
+.scroll-line { width:1px; height:48px; background:linear-gradient(to bottom,var(--neon),transparent); animation:blk 2s ease-in-out infinite }
+
+/* Responsive */
+@media(max-width:1100px){ .home-grid{grid-template-columns:1fr;gap:46px;text-align:center} .home-p{max-width:100%} .home-btns{justify-content:center} .home-visual{order:-1} .av-chips{display:none} }
+@media(max-width:600px) { #avStage{width:320px;height:380px} .r1{width:320px;height:320px;margin:-160px 0 0 -160px} .r2{width:280px;height:280px;margin:-140px 0 0 -140px} .r3{width:360px;height:360px;margin:-180px 0 0 -180px} .av-photo-container{width:260px;height:260px;margin:-130px 0 0 -130px} }
