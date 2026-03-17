@@ -11,13 +11,13 @@
     rel="stylesheet" />
 
   <!-- ═══ MODULAR CSS — one file per section ═══ -->
-  <link rel="stylesheet" href="global.css" />
-  <link rel="stylesheet" href="home.css" />
-  <link rel="stylesheet" href="about.css" />
-  <link rel="stylesheet" href="projects.css" />
-  <link rel="stylesheet" href="skills.css" />
-  <link rel="stylesheet" href="certifications.css" />
-  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/certifications.css" />
+  <link rel="stylesheet" href="css/contact.css" />
 </head>
 
 <body>
@@ -41,7 +41,7 @@
   <!-- ░░ NAVIGATION ░░ -->
   <nav id="mainNav">
     <div class="nav-logo">ASC<span>.DEV</span></div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#home" class="nav-a active">Home</a></li>
       <li><a href="#about" class="nav-a">About</a></li>
       <li><a href="#projects" class="nav-a">Projects</a></li>
@@ -50,6 +50,11 @@
       <li><a href="#contact" class="nav-a">Contact</a></li>
     </ul>
     <div class="nav-badge"><span class="nav-dot"></span>BCA · 2027</div>
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle Menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </nav>
 
   <!-- ════════════════════════════════════════════
@@ -96,7 +101,7 @@
 
             <div class="av-photo-container">
               <!-- ★ YOUR IMAGE: drop assets/my3dimage.png here ★ -->
-              <img src="my3dimage.png" alt="Aryan 3D Image" class="av-photo-3d" id="heroImg"
+              <img src="assets/my3dimage.png" alt="Aryan 3D Image" class="av-photo-3d" id="heroImg"
                 onerror="this.style.display='none';document.getElementById('avFallback').style.display='flex'" />
 
               <!-- SVG fallback shown if image file is missing -->
@@ -596,15 +601,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- ═══ MODULAR JS — one file per section ═══ -->
-  <script src="global.js"></script>
-  <script src="background3d.js"></script>
-  <script src="home.js"></script>
-  <script src="about.js"></script>
-  <script src="projects.js"></script>
-  <script src="skills.js"></script>
-  <script src="certifications.js"></script>
-  <script src="contact.js"></script>
+  <script src="js/global.js"></script>
+  <script src="js/background3d.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/skills.js"></script>
+  <script src="js/certifications.js"></script>
+  <script src="js/contact.js"></script>
 </body>
-
 
 </html>
