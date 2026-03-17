@@ -100,3 +100,25 @@
     document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
   });
 })();
+
+/* ── Mobile Menu Toggle ──────────────────────────────────── */
+(function () {
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('navLinks');
+  const links = document.querySelectorAll('.nav-a');
+  if (!toggle || !nav) return;
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    nav.classList.toggle('active');
+    document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+  });
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      toggle.classList.remove('active');
+      nav.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+  });
+})();
